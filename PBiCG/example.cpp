@@ -1,5 +1,5 @@
 // example.cpp
-#include "pbigc_solver.h"
+#include "PBiCGsolver.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -97,7 +97,7 @@ public:
 };
 
 int main() {
-    const int n = 500;
+    const int n = 1000;
     
     // 创建矩阵
     NonSymmetricMatrix A(n);
@@ -115,12 +115,15 @@ int main() {
     JacobiPreconditioner jacobi_precond(A);
     
     // 配置求解器
-    PBiCGSolver solver;
-    PBiCGSolver::SolverConfig config;
+    // PBiCGSolver solver;
+    // PBiCGSolver::SolverConfig config;
+
+    PBiCGsolver solver;
+    PBiCGsolver::SolverConfig config;  
     config.tolerance = 1e-8;
-    config.max_iterations = 1000;
+    config.max_iterations = 10000;
     config.verbose = true;
-    config.print_interval = 50;
+    config.print_interval = 10;
     
     // 使用lambda函数包装矩阵向量乘积
     auto matVec = [&A](const std::vector<double>& v, std::vector<double>& result) {
@@ -159,7 +162,7 @@ int main() {
     
     // 显示部分解
     std::cout << "\n前10个解的值:" << std::endl;
-    for (int i = 0; i < std::min(10, n); ++i) {
+    for (int i = 0; i < std::min(20, n); ++i) {
         std::cout << "x[" << i << "] = " << x[i] << std::endl;
     }
     
