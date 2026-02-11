@@ -1,8 +1,8 @@
 # 编译器设置
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -O2
-TARGET = PBiCGsolver
-SOURCE = example.cpp PBiCGsolver.cpp 
+TARGET = PBiCG
+SOURCE = PBiCGexample.cpp PBiCG.cpp 
 
 # 默认目标
 all: $(TARGET)
