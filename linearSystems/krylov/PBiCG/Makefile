@@ -1,12 +1,9 @@
 # Compiler configuration
 CXX ?= g++
 CXXFLAGS ?= -std=c++11 -Wall -Wextra -O2
-
-# Override these from the command line when needed, for example:
-# make SOURCE=rootFinding/bisectionMethod.cpp
-SOURCE ?= rootFinding/GeneralNewtonMethod.cpp
 BUILD_DIR ?= build
-TARGET ?= $(BUILD_DIR)/$(basename $(notdir $(SOURCE)))
+TARGET ?= $(BUILD_DIR)/PBiCG
+SOURCE ?= PBiCGexample.cpp PBiCG.cpp
 
 all: $(TARGET)
 
@@ -31,7 +28,6 @@ help:
 	@echo "  make run"
 	@echo "  make debug"
 	@echo "  make clean"
-	@echo "  make SOURCE=rootFinding/bisectionMethod.cpp"
-	@echo "  make SOURCE=linearSystems/direct/GaussianElimination.cpp"
+	@echo "  make SOURCE='example.cpp PBiCGsolver.cpp' TARGET=build/PBiCGsolver"
 
 .PHONY: all run debug clean help
